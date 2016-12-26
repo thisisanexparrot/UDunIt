@@ -1,1 +1,18 @@
-<h1>Hi there. This is Jots.</h1>
+<h1>Hi there. This is Jots. Here is all the jots.</h1>
+<%= link_to 'New Jot', new_jot_path %>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Text</th>
+	</tr>
+
+	<% @jots.each do |jot| %>
+		<tr>
+			<td><%= link_to jot.title, jot_path(jot) %></td>
+			<td><%= jot.text %></td>
+			<td><%= link_to 'Edit', edit_jot_path(jot)%></td>
+			<td><%= link_to 'Destroy', jot_path(jot), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>

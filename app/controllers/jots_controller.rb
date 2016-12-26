@@ -1,5 +1,6 @@
 class JotsController < ApplicationController
 	def index
+		@jots = Jot.all
 	end
 
 	def show
@@ -7,17 +8,42 @@ class JotsController < ApplicationController
 	end
 
 	def new
+		@jot = Jot.new
+	end
+
+	def edit
+		@jot = Jot.find(params[:id])
 	end
 
 	def create
-		@jot = Jot.new(article_params)
+		@jot = Jot.new(jot_params)
 
-		@jot.save
-		redirect_to @jot
+		if @jot.save
+			redirect_to @jot
+		else
+			render 'new'
+		end
+	end
+
+	def update
+		@jot = Jot.find(params[:id])
+
+		if(@jot.update(jot_params))
+			redirect_to @jot
+		else
+			render 'edit'
+		end
+	end	
+
+	def destroy
+		@jot = Jot.find(params[:id])
+		@jot.destroy
+
+		redirect_to jots_path
 	end
 
 	private
-		def article_params
+		def jot_params
 			params.require(:jot).permit(:title, :text)
 		end
 end

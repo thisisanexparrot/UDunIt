@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :jots
+  resources :jots do
+    resources :goals
+  end
   root 'jots#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
