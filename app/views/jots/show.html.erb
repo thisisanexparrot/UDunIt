@@ -8,5 +8,11 @@
 	<%= @jot.text %>
 </p>
 
+<h2>Goals</h2>
+<%= render @jot.goals %>
+
+<h2>Add a goal:</h2>
+<%= render 'goals/form' %>
+
 <%= link_to 'Edit', edit_jot_path(@jot) %>
 <%= link_to 'Back', jots_path %>

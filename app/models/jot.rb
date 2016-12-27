@@ -1,4 +1,4 @@
 class Jot < ActiveRecord::Base
-	has_many :goals
+	has_many :goals, dependent: :destroy
 	validates :title, presence: true, length: {minimum: 5}
 end

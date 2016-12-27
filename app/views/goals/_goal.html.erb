@@ -1,0 +1,13 @@
+<p>
+	<strong>Goal:</strong>
+	<%= goal.name %>
+</p>
+
+<p>
+	<strong>Description:</strong>
+	<%= goal.description %>
+</p>
+
+<p>
+	<%= link_to 'Destroy Goal', [goal.jot, goal], method: :delete, data: {confirm: 'Are you sure?'} %>
+</p>
